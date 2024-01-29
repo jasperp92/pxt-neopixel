@@ -251,20 +251,20 @@ namespace neopixel {
         //% parts="neopixel"
         show() {
             if (this._snakePattern) {
-                for (let y = 0; y < this._length / this._matrixWidth; y += 2) {
+                for (let y = 1; y < this._length / this._matrixWidth; y += 2) {
                     for (let x = 0; x < this._matrixWidth / 2; x++) {
                         const leftIndex = ((y * this._matrixWidth) + x) * 3; // Assuming RGB mode
                         const rightIndex = ((y * this._matrixWidth) + (this._matrixWidth - 1 - x)) * 3;
-
+            
                         // Swap RGB values for the left and right pixels
                         const tempR = this.buf[leftIndex];
                         const tempG = this.buf[leftIndex + 1];
                         const tempB = this.buf[leftIndex + 2];
-
+            
                         this.buf[leftIndex] = this.buf[rightIndex];
                         this.buf[leftIndex + 1] = this.buf[rightIndex + 1];
                         this.buf[leftIndex + 2] = this.buf[rightIndex + 2];
-
+            
                         this.buf[rightIndex] = tempR;
                         this.buf[rightIndex + 1] = tempG;
                         this.buf[rightIndex + 2] = tempB;
